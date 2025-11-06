@@ -26,7 +26,6 @@ namespace dynamicencrypt::core
         static constexpr const char *name = "asymmetric";
     };
 
-    // Template showcases strong typing for secrets using policy tags.
     template <typename KeyTag>
     class Key
     {
@@ -72,7 +71,6 @@ namespace dynamicencrypt::core
         friend std::ostream &operator<<(std::ostream &os, const Key<TTag> &key);
     };
 
-    // Stream operator demonstrates operator overloading without leaking secrets.
     template <typename KeyTag>
     std::ostream &operator<<(std::ostream &os, const Key<KeyTag> &key)
     {
@@ -99,7 +97,6 @@ namespace dynamicencrypt::core
         return Key<SymmetricKeyTag>(material, QStringLiteral("generated"));
     }
 
-    // Overloaded helpers illustrate API flexibility for key import scenarios.
     inline Key<SymmetricKeyTag> importSymmetricKey(const QString &path)
     {
         QFile file(path);
@@ -139,4 +136,4 @@ namespace dynamicencrypt::core
         return Key<SymmetricKeyTag>(blob, QStringLiteral("metadata"));
     }
 
-} // namespace dynamicencrypt::core
+}

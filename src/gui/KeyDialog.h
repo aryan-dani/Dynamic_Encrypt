@@ -20,7 +20,7 @@ namespace dynamicencrypt::gui
         explicit KeyDialog(QWidget *parent = nullptr);
 
         bool hasKey() const noexcept { return static_cast<bool>(m_key); }
-        dynamicencrypt::core::Key<dynamicancrypt::core::SymmetricKeyTag> takeKey();
+        dynamicencrypt::core::Key<dynamicencrypt::core::SymmetricKeyTag> takeKey();
 
         void accept() override;
 
@@ -37,7 +37,7 @@ namespace dynamicencrypt::gui
         QLineEdit *m_passphraseLine{nullptr};
         QLabel *m_status{nullptr};
 
-        std::unique_ptr<dynamicancrypt::core::Key<dynamicancrypt::core::SymmetricKeyTag>> m_key;
+        std::unique_ptr<dynamicencrypt::core::Key<dynamicencrypt::core::SymmetricKeyTag>> m_key;
     };
 
 } // namespace dynamicencrypt::gui

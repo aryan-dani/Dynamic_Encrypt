@@ -9,8 +9,6 @@
 
 namespace dynamicencrypt::core
 {
-
-    // RAII helper ensuring sensitive material is cleared once it leaves scope.
     class ZeroizingBuffer
     {
     public:

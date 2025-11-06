@@ -8,9 +8,6 @@
 
 #include <stdexcept>
 
-using dynamicencrypt::core::Key;
-using dynamicencrypt::core::ZeroizingBuffer;
-
 namespace dynamicencrypt::plugins
 {
 
@@ -79,7 +76,7 @@ namespace dynamicencrypt::plugins
     QByteArray AESDriverImpl::xorSeal(const QByteArray &input, const QByteArray &key, const QByteArray &nonce) const
     {
         QByteArray result(input.size(), Qt::Uninitialized);
-        ZeroizingBuffer mask(input.size());
+        dynamicencrypt::core::ZeroizingBuffer mask(input.size());
         QByteArray &maskBytes = mask.writable();
         maskBytes.resize(input.size());
         for (int i = 0; i < input.size(); ++i)

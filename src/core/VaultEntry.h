@@ -16,4 +16,4 @@ namespace dynamicencrypt::core
         QDateTime timestamp;
     };
 
-} // namespace dynamicencrypt::core
+} 

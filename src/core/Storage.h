@@ -11,7 +11,6 @@
 namespace dynamicencrypt::core
 {
 
-    // Storage showcases method overloading for path vs. QFile usage.
     class Storage
     {
     public:

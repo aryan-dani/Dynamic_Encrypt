@@ -42,4 +42,4 @@ namespace dynamicencrypt::core
 } // namespace dynamicencrypt::core
 
 #define CryptoDriver_iid "com.dynamicencrypt.CryptoDriver"
-Q_DECLARE_INTERFACE(dynamicancrypt::core::CryptoDriver, CryptoDriver_iid)
+Q_DECLARE_INTERFACE(dynamicencrypt::core::CryptoDriver, CryptoDriver_iid)

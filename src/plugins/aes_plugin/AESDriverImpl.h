@@ -13,7 +13,7 @@ namespace dynamicencrypt::plugins
     {
         Q_OBJECT
         Q_PLUGIN_METADATA(IID CryptoDriver_iid FILE "plugin.json")
-        Q_INTERFACES(dynamicancrypt::core::CryptoDriver)
+        Q_INTERFACES(dynamicencrypt::core::CryptoDriver)
 
     public:
         AESDriverImpl() = default;
