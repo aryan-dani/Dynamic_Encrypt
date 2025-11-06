@@ -1,0 +1,7 @@
+{
+  "MetaData": {
+    "description": "Demo XOR-based placeholder for AES-GCM. Replace with real crypto library.",
+    "capabilities": ["symmetric"],
+    "auth": "weak-demo"
+  }
+}
