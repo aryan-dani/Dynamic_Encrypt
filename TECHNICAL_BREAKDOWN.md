@@ -14,11 +14,13 @@ The primary example is the `Key<T>` class located in `src/core/Key.h`.
 **How does it work?**
 
 1.  **Tag-Based Specialization**: We first define simple, empty `struct`s to act as "tags" or "policies":
+
     ```cpp
     // In src/core/Key.h
     struct SymmetricKeyTag {};
     struct AsymmetricKeyTag {};
     ```
+
     These tags carry no data; their only purpose is to exist as distinct types.
 
 2.  **Templated `Key` Class**: The `Key` class is templated on a `KeyTag`. This means that `Key<SymmetricKeyTag>` and `Key<AsymmetricKeyTag>` are **completely different and incompatible types** from the compiler's perspective.
@@ -78,6 +80,7 @@ The core of this design is the abstract base class `CryptoDriver` and its concre
         // ...
     };
     ```
+
     The `override` keyword is used to explicitly state that we are overriding a base class function, which helps the compiler catch errors.
 
 **Why was it used?**
@@ -118,6 +121,7 @@ bool Storage::store(const QString& path, const QByteArray& data) {
     return true;
 }
 ```
+
 `QSaveFile` works by writing to a temporary file first. Only when the `commit()` method is called successfully is the temporary file renamed to the final destination file. This ensures the original file is never left in a corrupted, partially-written state.
 
 **Why was it used?**
@@ -133,6 +137,7 @@ Overloading allows multiple functions or methods with the same name but differen
 
 1.  **Method Overloading**: `src/core/Storage.h`
     The `Storage` class provides two versions of the `store` method:
+
     ```cpp
     // In src/core/Storage.h
     class Storage {
@@ -144,6 +149,7 @@ Overloading allows multiple functions or methods with the same name but differen
         static bool store(QFile* f, const QByteArray& data);
     };
     ```
+
     This provides flexibility to the caller. They can either provide a path and let the function handle opening/closing the file, or manage the file object themselves and pass it in.
 
 2.  **Operator Overloading**: `src/core/Key.h`
@@ -161,8 +167,10 @@ Overloading allows multiple functions or methods with the same name but differen
         return debug;
     }
     ```
+
     Now, if a developer tries to log a `Key` object (e.g., `qDebug() << myKey;`), it won't print the sensitive key bytes. Instead, it will print the safe, redacted message: `Key<...>(size=32, content=<REDACTED>)`.
 
 **Why was it used?**
+
 - **Method overloading** provides a more convenient and intuitive API.
 - **Operator overloading** enhances security by creating a "guardrail" that prevents sensitive data from being leaked into logs.
