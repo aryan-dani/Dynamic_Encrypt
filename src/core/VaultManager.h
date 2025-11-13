@@ -76,8 +76,7 @@ namespace dynamicencrypt::core
             return driver->encrypt(plaintext, key.raw());
         }
 
-        template <typename KeyTag>
-        QByteArray decryptWith(CryptoDriver *driver, const QByteArray &ciphertext, const Key<KeyTag> &key)
+       ptoDriver *driver, const QByteArray &ciphertext, const Key<KeyTag> &key)
         {
             static_assert(std::is_same_v<KeyTag, SymmetricKeyTag>, "decryptWith currently accepts symmetric keys");
             if (!driver)
